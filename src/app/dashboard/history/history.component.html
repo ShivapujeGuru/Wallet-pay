@@ -1,0 +1,89 @@
+<body>
+  <main><br>
+    <div class="container" *ngIf="history">
+      <div id="transactionHistory" style="padding: 0px 20px 20px 30px;">
+        <div style="float: right;">
+          <div class="ui two column centered grid">
+            <div class="three column row">
+              <div class="left floated column" style="padding-right: 97px;">
+                <h3 class="floated left" style="text-align: center; color: #6435c9;">Transaction History</h3>
+              </div>
+              <div class="centered floated column date">
+                <label>From : </label>
+                <input type="date" (change)="getHistory(fromRange.value, toRange.value)"
+                  #fromRange name = "fromRange" ngModel>
+                <div>
+                  <span *ngIf="!fromRange.value && toRange.value" class="range">Select a From Date</span>
+                </div>
+              </div>
+              <div class="centered floated column date">
+                <label>To : </label>
+                <input type="date" (change)="getHistory(fromRange.value, toRange.value)"
+                  #toRange name = "toRange" ngModel>
+                <div>
+                  <span *ngIf="fromRange.value && !toRange.value" class="range">Select a To Date</span>
+                </div>
+              </div>
+            </div>
+          </div><br>
+        </div>
+        <br>
+        <table class="ui violet table">
+          <thead>
+            <tr>
+              <th style="text-align: center;">S No.</th>
+              <th style="text-align: center;">Name</th>
+              <th style="text-align: center;">Merchant Number</th>
+              <th style="text-align: center;">Date and Time</th>
+              <th style="text-align: center;">Total Amount</th>
+              <th style="text-align: center;">Status</th>
+            </tr>
+          </thead>
+          <tbody class="tabular" *ngFor="let data of historyData; let i=index">
+            <tr>
+              <td style="text-align: center;">{{ i+1 }}</td>
+              <td style="text-align: center;">
+                <span *ngIf="!data.isSelf">{{ data.to }}</span>
+                <span *ngIf="data.isSelf">Self</span>
+              </td>
+              <td style="text-align: center;">
+                <span *ngIf="!data.isSelf">{{ data.toNumber }}</span>
+                <span *ngIf="data.isSelf">Self</span>
+              </td>
+              <td style="text-align: center;">{{ data.createdAt | date: 'medium' }}</td>
+              <td style="text-align: center;">{{ data.amount }}</td>
+              <td style="text-align: center;">
+                <span style="color: #28a745;">SUCCESS </span>
+                <span *ngIf="!data.isSelf">: Sent {{ data.amount }} rs to {{ data.to }} on 
+                  {{ data.createdAt | date: 'mediumDate' }}</span>
+                <span *ngIf="data.isSelf">: Added {{ data.amount }} rs to Wallet Money on 
+                  {{ data.createdAt | date: 'mediumDate' }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ui secondary menu">
+        <div class="right menu" style="padding: 10px;">
+          <div class="ui inverted">
+            <button (click)="downloadPDF()" class="ui inverted violet button">Download PDF</button>&nbsp;&nbsp;          
+            <button (click)="downloadExcel()" class="ui inverted violet button">Download Excel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!history">
+      <h3 style="text-align: center; color: #6435c9;">No Transaction History</h3>
+    </div>
+    <div *ngIf="invalid" style="text-align: center;">
+      <span style="color: red; font-size: 20px;">Error Fetching History Details.</span>
+    </div>
+  </main>
+  <div class="image">
+    <div class="head-text">
+      <h1>Wallet-Bank</h1>
+      <hr>
+      <h3>Easy Money Trasfer</h3>
+    </div>
+  </div>
+</body>

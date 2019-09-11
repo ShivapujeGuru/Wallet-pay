@@ -1,0 +1,41 @@
+<body>
+  <div class="page-login">
+    <div class="ui center grid container">
+      <div class="eight wide column">
+        <div id="login">
+          <h2>Login Your Account</h2>
+        </div>
+        <div class="ui fluid card">
+          <div class="content">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="ui form">
+              <div class="field">
+                <label>Phone Number</label>
+                <input type="text" formControlName="phoneNumber" placeholder="Phone Number">
+              </div>
+              <div *ngIf="loginForm.get('phoneNumber').errors  && isSubmitted">
+                <div *ngIf="loginForm.get('phoneNumber').hasError('required')" class="alert alert-danger">
+                  <span style="color: red;">Phone Number is Required.</span>
+                </div>
+              </div>
+              <div class="field">
+                <label>Password</label>
+                <input type="password" formControlName="password" placeholder="Password">
+              </div>
+              <div *ngIf="loginForm.get('password').errors  && isSubmitted">
+                <div *ngIf="loginForm.get('password').hasError('required')" class="alert alert-danger">
+                  <span style="color: red;">Password is Required.</span>
+                </div>
+              </div>
+              <div *ngIf="invalid" style="text-align: center;">
+                <span style="color: red;">Invalid User Credentials.</span>
+              </div>
+              <button class="ui primary labeled icon button" type="submit" id="login-text">
+                <i class="unlock alternative icon"></i>Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>

@@ -1,0 +1,33 @@
+.menu{
+    margin: 10px 5px 10px 2px;
+    padding: 10px;
+    align-content: center;
+    border-radius: 10px;
+    border: 5px;
+    background-color: rgb(30, 23, 59);
+    color: aliceblue;
+}
+.menu h3{
+    margin-left: 20px;
+}
+
+.header{
+    align-content: center;
+    color: rgb(40, 31, 80);
+    margin: 5px 0px 20px 0px;
+    padding: 5px;
+}
+
+.container{
+    margin: 10px 100px 50px 260px;
+    padding: 0;
+}
+
+#button{
+    background-color: rgb(28, 22, 53) !important;
+    border-radius: 5px;
+}
+
+#button{
+    color: #fff !important;
+}

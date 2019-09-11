@@ -1,0 +1,26 @@
+<body>
+    <main>
+        <div class="ui segment">
+            <div class="ui two column very relaxed grid">
+                <div class="column" id="profile">
+                    <img class="ui medium circular image" src="assets/profile.png">
+                </div>
+                <div class="column" id="content">
+                    <h3>Username</h3> <hr>
+                    <p>Name: {{ data.username }}</p>
+                    <p>Phone Number: {{ data.phoneNumber }}</p>
+                    <p>Email: {{ data.email }}</p>
+                    <p>Created On: {{ data.createdAt | date: 'short' }}</p>
+                    <!-- <p>Address: Lorem ipsum dolor sit amet.</p> -->
+                </div>
+            </div>
+        </div>
+    </main>
+    <div class="image">
+        <div class="head-text">
+            <h1>Wallet-Bank</h1>
+            <hr>
+            <h3>Easy Money Trasfer</h3>
+        </div>
+    </div>
+</body>

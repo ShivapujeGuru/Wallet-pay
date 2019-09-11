@@ -1,0 +1,69 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.main-menu{
+    margin: 0px !important;
+    padding: 10px !important;
+    align-content: center;
+    text-align: center;
+    border-radius: 2px !important;
+    border: 0px;
+    background-color: rgb(18, 15, 31);
+    color: aliceblue;
+}
+.menu h3{
+    margin-left: 20px;
+}
+.image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(src/assets/back.jpg);
+    height: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    border-radius: 2px;
+}
+
+.head-text{
+    text-align: center;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(231, 232, 241);
+}
+
+.footer{
+    position: fixed;
+    width: 100%;
+    height: 100px;
+    margin-bottom:1px;
+    bottom: 0;
+    text-align: center;
+    border-radius: 5px;
+    background-color: rgb(18, 15, 31);
+    color: aliceblue;
+}
+
+.container{
+    justify-content: space-between;
+}
+
+.container p{
+    padding: 10px;
+    margin-top: 10px;
+}
+.container a{
+    margin-top: 10px;
+    padding: 10px;
+    color: #fff;
+}
+
+.services{
+    margin-left: 25px;
+}
+
+.highlight {
+    cursor: pointer;
+}

@@ -1,0 +1,25 @@
+<br>
+<div class="container" *ngIf="itemData" style="padding: 0px 20px 0px 20px;">
+  <h3 style="text-align: center; color: #6435c9; border-bottom: 2px solid #6435c9; padding-bottom: 10px;">
+    Items <a (click)="ngxSmartModalService.getModal('myModal').open()" *ngIf="isMerchant"><i class="add icon" style="cursor: pointer; color: #6435c9 !important;"></i></a>
+  </h3>
+</div>
+<div class="ui four doubling stackable cards" style="padding: 25px;">
+  <div class="ui fluid card" *ngFor="let item of itemData">
+    <div class="content">
+      <a class="header" style="color: #1e70bf;">{{ item.itemName }}</a>
+      <div class="meta">
+        <span class="date">Price - <span class="successMessage">{{ item.itemPrice }}</span>/-</span>
+      </div>
+      <div class="description">
+        Added on {{ item.createdAt | date:'short' }}
+      </div>
+    </div>
+    <div class="extra content" *ngIf="!isMerchant">
+      <a><button class="ui green button" (click)="buyItem(item)">Buy</button></a>
+    </div>
+  </div>
+</div>
+<ngx-smart-modal #myModal identifier="myModal">
+  <app-add-item></app-add-item>
+</ngx-smart-modal>

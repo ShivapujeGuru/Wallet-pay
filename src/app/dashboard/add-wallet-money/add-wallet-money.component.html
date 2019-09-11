@@ -1,0 +1,21 @@
+<h1 style="color: #2185d0; text-align: center;">Add Money To Wallet</h1>
+<form [formGroup]="addWalletMoneyForm" *ngIf="!isSubmitted" (ngSubmit)="onSubmit()" class="ui form">
+  <div class="field">
+    <label>Amount</label>
+    <input type="text" formControlName="amount" placeholder="Amount">
+  </div>
+  <div *ngIf="addWalletMoneyForm.get('amount').errors  && isSubmitted">
+    <div *ngIf="addWalletMoneyForm.get('amount').hasError('required')" class="alert alert-danger">  
+      <span style="color: red;">Amount is Required.</span>  
+    </div>
+  </div>
+  <button class="ui primary labeled icon button" type="submit">
+      <i class="external alternate icon"></i>Add</button>&nbsp;<br><br>
+</form>
+
+<div *ngIf="isSubmitted && !message" style="text-align: center;">
+  Added {{ addingAmount }} rs to Wallet successfully.<br><br>
+</div>
+<div *ngIf="isSubmitted && message" style="text-align: center; color: red">
+  {{ message }}<br><br>
+</div>

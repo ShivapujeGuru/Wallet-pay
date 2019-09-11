@@ -1,0 +1,11 @@
+<div class="ui secondary pointing menu" routerLinkActive="active">
+  <a routerLink="/dashboard-layout/profile" routerLinkActive="active" class="item">Profile</a>
+  <a routerLink="/dashboard-layout/service" routerLinkActive="active" class="item">Services</a>
+  <a routerLink="/dashboard-layout/users" routerLinkActive="active" class="item" *ngIf="isMerchant">Users</a>
+  <a routerLink="/dashboard-layout/items" routerLinkActive="active" class="item">Items</a>
+  <a routerLink="/dashboard-layout/my-items" routerLinkActive="active" class="item" *ngIf="!isMerchant">My Items</a>
+  <a routerLink="/dashboard-layout/history" routerLinkActive="active" class="item">History</a>
+  <div class="right menu">
+    <a (click)="onLogout()" class="item">Logout</a>
+  </div>
+</div>

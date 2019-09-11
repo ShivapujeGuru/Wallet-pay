@@ -1,0 +1,27 @@
+<h1 style="color: #2185d0; text-align: center;">Add Item</h1>
+<div *ngIf="isSubmitted && itemName" style="text-align: center;">
+  <span style="color: #28a745; font-size: 16px;">Item {{ itemName }}  Added successfully.</span>
+</div>
+<form [formGroup]="addItemForm" (ngSubmit)="onSubmit()" class="ui form">
+  <div class="field">
+    <label>Item Name</label>
+    <input type="text" formControlName="itemName" placeholder="Item Name">
+  </div>
+  <div *ngIf="addItemForm.get('itemName').errors  && isSubmitted">
+    <div *ngIf="addItemForm.get('itemName').hasError('required')" class="alert alert-danger">  
+      <span style="color: red;">Name is Required.</span>
+    </div>
+  </div><br>
+  <div class="field">
+    <label>Item Price</label>
+    <input type="text" formControlName="itemPrice" placeholder="Item Price">
+  </div>
+  <div *ngIf="addItemForm.get('itemPrice').errors  && isSubmitted">
+    <div *ngIf="addItemForm.get('itemPrice').hasError('required')" class="alert alert-danger">  
+      <span style="color: red;">Price is Required.</span>  
+    </div>
+  </div><br>
+  <button class="ui primary labeled icon button" type="submit">
+      <i class="exchange icon"></i>Add Item</button>
+</form>
+<br>

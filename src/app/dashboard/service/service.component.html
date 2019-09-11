@@ -1,0 +1,40 @@
+<div>
+  <main>
+    <div class="ui secondary menu">
+    <div class="Services">
+      <ul>
+        <div class="ui raised segment">
+          <h3 class="highlight"><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="onAdd()" *ngIf="bank; else addedBank"> <i class="add icon"></i> Add Bank</a></h3>
+        </div>
+        <ng-template #addedBank><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="onAdd()" class="highlight" style="color: #4183c4;"><i class="money bill alternate outline icon"></i>Show Bank Details</a></ng-template>
+        <div class="ui raised segment">
+          <h3 class="highlight"><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="onCheck()"> <i class="credit card icon"></i> Check Bank Balance</a></h3>
+        </div>
+        <div class="ui raised segment">
+          <h3 class="highlight"><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="onTransfer()"> <i class="exchange icon"></i> Transfer Money</a></h3>
+        </div>
+        <div class="ui raised segment" *ngIf="isMerchant">
+          <h3 class="highlight"><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="sendMoneyToBank()"> <i class="share square outline icon"></i> Send Money to Bank</a></h3>
+        </div>
+        <div class="ui raised segment">
+          <h3 class="highlight"><a (click)="ngxSmartModalService.getModal('myModal').open()" (click)="addWalletMoney()"> <i class="external alternate icon"></i> Add Money to Wallet</a></h3>
+        </div>
+      </ul>
+    </div>
+    <div class="right ui statistic" style="padding: 10px; margin-left: 65%; margin-top: 0%;">
+      <div class="value" *ngIf="walletBalance;else nodata" style="color: #4183c4; font-size: 40px !important;">
+        {{ walletBalance }} INR
+      </div>
+      <ng-template #nodata><div class="value" style="color: #4183c4; font-size: 40px !important;">---</div></ng-template>
+      <div class="label">Wallet Money</div> &nbsp;
+    </div>
+    </div>
+  </main>
+  <ngx-smart-modal #myModal identifier="myModal">
+    <app-add-wallet-money *ngIf="walletMoney"></app-add-wallet-money>
+    <app-add-bank *ngIf="add"></app-add-bank>
+    <app-check-balance *ngIf="check"></app-check-balance>
+    <p *ngIf="transferToBank" style="text-align: center;">Transferred all the Wallet money to your Bank Account</p>
+    <app-transfer *ngIf="transfer"></app-transfer>
+  </ngx-smart-modal>
+</div>

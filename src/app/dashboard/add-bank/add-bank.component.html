@@ -1,0 +1,43 @@
+<div *ngIf="!bankDetails">
+  <h1 style="color: #2185d0; text-align: center;">Add Bank Account</h1>
+  <form [formGroup]="addAccForm" (ngSubmit)="onSubmit()" *ngIf="!isSubmitted" class="ui form">
+    <div class="field">
+      <label>Account Number</label>
+      <input type="text" formControlName="accountNumber" placeholder="Account Number">
+    </div><br>
+    <div *ngIf="addAccForm.get('accountNumber').errors  && isSubmitted">
+      <div *ngIf="addAccForm.get('accountNumber').hasError('required')" class="alert alert-danger">  
+        <span style="color: red;">Account Number is Required.</span>  
+      </div>
+    </div>
+    <div class="field">
+      <label>Bank Name</label>
+      <input type="text" formControlName="bankName" placeholder="Bank Name">
+    </div><br>
+    <div *ngIf="addAccForm.get('bankName').errors  && isSubmitted">
+      <div *ngIf="addAccForm.get('bankName').hasError('required')" class="alert alert-danger">  
+        <span style="color: red;">Bank Name is Required.</span>  
+      </div>
+    </div>
+    <div class="field">
+      <label>Balance</label>
+      <input type="text" formControlName="balance" placeholder="Balance">
+    </div><br>
+    <div *ngIf="addAccForm.get('balance').errors  && isSubmitted">
+      <div *ngIf="addAccForm.get('balance').hasError('required')" class="alert alert-danger">  
+        <span style="color: red;">Balance is Required.</span>  
+      </div>
+    </div>
+    <button class="ui primary labeled icon button" type="submit">
+        <i class="add icon"></i>Add Account</button>&nbsp;
+  </form>
+
+  <div *ngIf="isSubmitted" style="text-align: center;">
+    Created Bank Account successfully with Account Number {{ accNum }}.<br><br>
+  </div>
+</div>
+<div *ngIf="bankDetails" style="text-align: center">
+  <h1 style="color: #2185d0;">Bank Details</h1>
+  <span>Bank Name : {{ bankDetails.bankName }}</span><br>
+  <span>Account Number : {{ bankDetails.accountNumber }}</span>
+</div>

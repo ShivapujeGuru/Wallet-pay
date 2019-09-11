@@ -1,0 +1,40 @@
+<h1 style="color: #2185d0; text-align: center;">Transfer Money</h1>
+<div *ngIf="isSubmitted && successMessage" style="text-align: center;">
+  <span class="successMessage">Transferred {{ sentMoney }} rs to 
+    {{recieverName}} successfully.</span>
+</div>
+<div *ngIf="isSubmitted && failureMessage" style="text-align: center;">
+  <span class="failureMessage">{{ failureMessage }}</span>
+</div>
+<form [formGroup]="transferForm" (ngSubmit)="onSubmit()" class="ui form">
+  <div class="field">
+    <label>Phone Number</label>
+    <select class="ui fluid search dropdown" formControlName="recieverNumber" placeholder="Phone Number">
+      <option *ngFor="let merchant of merchantData" >{{ merchant.phoneNumber }}</option>
+    </select>
+    <!-- <label>Phone Number</label> -->
+    <!-- <ngx-select-dropdown (change)="selectionChanged($event)"  
+      [options]="merchantData"></ngx-select-dropdown> -->
+    <!-- <select formControlName="recieverNumber" placeholder="Phone Number" class="ui fluid search dropdown">
+      <option>Select Merchant</option>
+      <option *ngFor="let merchant of merchantData" >{{ merchant.username }} - {{ merchant.phoneNumber }}</option>
+    </select> -->
+
+  </div>
+  <div *ngIf="transferForm.get('recieverNumber').errors  && isSubmitted">
+    <div *ngIf="transferForm.get('recieverNumber').hasError('required')" class="alert alert-danger">  
+      <span style="color: red;">Phone Number is Required.</span>  
+    </div>
+  </div>
+  <div class="field">
+    <label>Amount</label>
+    <input type="text" formControlName="amount" placeholder="Amount">
+  </div><br>
+  <div *ngIf="transferForm.get('amount').errors  && isSubmitted">
+    <div *ngIf="transferForm.get('amount').hasError('required')" class="alert alert-danger">  
+      <span style="color: red;">Amount is Required.</span>  
+    </div>
+  </div>
+  <button class="ui primary labeled icon button" type="submit">
+      <i class="exchange icon"></i>Transfer</button>
+</form>
